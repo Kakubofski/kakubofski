@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Mój notatnik gier</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1c1c1c 0%, #252525 100%);
+    color: #f8f8f2;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(50, 51, 43, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.8s ease;
+  }
+
+  h1 {
+    text-align: center;
+    color: #ffd760;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 215, 96, 0.8);
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+
+  input, select, button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  input, select {
+    background: #23231d;
+    color: #ffd760;
+    border: 1px solid #ffd760;
+    outline: none;
+  }
+
+  input:focus, select:focus {
+    box-shadow: 0 0 8px #ffd760;
+  }
+
+  button {
+    background: linear-gradient(135deg, #ffd760, #ffb400);
+    color: #23231d;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 8px rgba(255, 215, 96, 0.4);
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #ffde85, #ffc107);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 215, 96, 0.5);
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e1e1a;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    animation: slideIn 0.4s ease;
+  }
+
+  .status {
+    background: #202406;
+    color: #ffd760;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    margin-right: 10px;
+    box-shadow: 0 0 6px rgba(255, 215, 96, 0.4);
+  }
+
+  .platform {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+  }
+  .ps3 { background: #4b77be; }  /* niebieski */
+  .ps4 { background: #1f618d; }  /* ciemny niebieski */
+  .pc { background: #27ae60; }   /* zielony */
+
+  .delete-btn {
+    background: #e74c3c;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.2s ease;
+  }
+
+  .delete-btn:hover {
+    background: #ff5a4c;
+    transform: translateY(-1px);
+  }
+
+  /* Animacje */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+.back-home {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 8px 16px;
+  background: #202406;
+  color: #ffd760;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.back-home:hover {
+  background: #ffd760;
+  color: #23231d;
+}
+
+  @keyframes slideIn {
+    from {opacity: 0; transform: translateX(-20px);}
+    to {opacity: 1; transform: translateX(0);}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 Mój notatnik gier</h1>
+    <form id="gameForm" autocomplete="off">
+      <input id="gameName" type="text" placeholder="Podaj tytuł gry" maxlength="60" required>
+      <select id="status" required>
+        <option value="-" disabled selected>Status...</option>
+        <option value="Ukończona">Ukończona</option>
+        <option value="Ukończona 100%">Ukończona 100%</option>
+      </select>
+      <select id="platform" required>
+        <option value="-" disabled selected>Platforma...</option>
+        <option value="PS3">PlayStation 3</option>
+        <option value="PS4">PlayStation 4</option>
+        <option value="PC">PC</option>
+      </select>
+      <button type="submit">➕ Dodaj</button>
+    </form>
+    <ul id="gameList"></ul>
+  </div>
+<a href="../Strona Głowna/glowna.html" class="back-home">⬅ Wróć do strony głównej</a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const gameForm = document.getElementById('gameForm');
+      const gameList = document.getElementById('gameList');
+      const gameName = document.getElementById('gameName');
+      const status = document.getElementById('status');
+      const platform = document.getElementById('platform');
+      
+      let games = JSON.parse(localStorage.getItem('games') || '[]');
+
+      function renderGames() {
+        gameList.innerHTML = '';
+        games.forEach((game, idx) => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <span>${game.title}</span>
+            <span>
+              <span class="status">${game.status}</span>
+              <span class="platform ${game.platform.toLowerCase()}">${game.platform}</span>
+              <button class="delete-btn" data-idx="${idx}">Usuń</button>
+            </span>
+          `;
+          gameList.appendChild(li);
+        });
+      }
+
+      gameForm.addEventListener('submit', e => {
+        e.preventDefault();
+        if(!gameName.value.trim() || status.value === '-' || platform.value === '-') return;
+
+        games.push({ 
+          title: gameName.value.trim(), 
+          status: status.value,
+          platform: platform.value 
+        });
+        localStorage.setItem('games', JSON.stringify(games));
+        renderGames();
+        gameName.value = '';
+        status.value = '-';
+        platform.value = '-';
+      });
+
+      gameList.addEventListener('click', e => {
+        if(e.target.classList.contains('delete-btn')) {
+          const idx = e.target.dataset.idx;
+          games.splice(idx, 1);
+          localStorage.setItem('games', JSON.stringify(games));
+          renderGames();
+        }
+      });
+
+      renderGames();
+    });
+  </script>
+</body>
+</html>
