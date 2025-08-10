@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<title>Moje projekty</title>
+<link rel="icon" type="image/svg+xml"
+ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23ffd760' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M8 12h8M12 8v8'/></svg>">
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #252525);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    text-align: center;
+    padding: 30px 20px;
+    color: #ffd760;
+    text-shadow: 0 0 8px rgba(255,215,96,0.8);
+  }
+  h1 {
+    margin: 0 0 10px;
+    font-size: 2rem;
+  }
+  p { margin: 0; font-size: 1.1rem; }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  .card {
+    background: rgba(50, 51, 43, 0.95);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    color: #ffd760;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255,215,96,0.4);
+  }
+  .card h2 {
+    margin-bottom: 10px;
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: #ddd;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📂 Moje Projekty</h1>
+  <p>Wybierz stronę, do której chcesz przejść</p>
+</header>
+
+<main>
+  <a class="card" href="../Strona NotatnikGier/niby ładniejszy.html">
+    <h2>🎮 Notatnik gier</h2>
+    <p>Zapisuj ukończone gry, platformy i statusy</p>
+  </a>
+
+  <a class="card" href="../Strona DyingLightTheBeast/dltbicon.html">
+    <h2>⏳ Odliczanie do Dying Light: The Beast</h2>
+    <p>Strona z licznikiem do premiery lub wydarzenia</p>
+  </a>
+
+  <!-- Przykład dodatkowego linku -->
+  <a class="card" href="../Strona DyingLightTheBeast/dltbicon.html">
+    <h2>🛠 Inny projekt</h2>
+    <p>Możesz tu dodać kolejne strony</p>
+  </a>
+</main>
+
+</body>
+</html>
