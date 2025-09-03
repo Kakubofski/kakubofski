@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Odliczanie do Dying Light:TB - Harran-city.ovh</title>
-	
-<link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
             margin: 0;
@@ -85,7 +84,6 @@
             h1 { font-size: 1.3em; }
             #harran-city-logo img { max-width: 80vw; }
         }
-
         /* Sekcja ikonek w rogu */
         .corner-icons {
             position: fixed;
@@ -131,49 +129,54 @@
             opacity: 1;
             fill: #ffffff;
         }
-		#harran-city-logo img {
-    max-width: 300px;
-    width: 40vw;
-    height: auto;
-    filter: brightness(1.07) drop-shadow(0 4px 14px #16130788);
-    animation: fade-in 1.2s cubic-bezier(.22,1,.36,1);
-	.back-home {
-  display: inline-block;
-  margin-bottom: 18px;
-  padding: 8px 16px;
-  background: #202406;
-  color: #ffd760;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.2s, color 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,.25);
-}
-.back-home:hover {
-  background: #ffd760;
-  color: #23231d;
-}
-
-}
-#harran-city-logo {
-   position: absolute;
-    top: 1px;
-    left: 16px;
-}
+        #harran-city-logo img {
+            max-width: 300px;
+            width: 40vw;
+            height: auto;
+            filter: brightness(1.07) drop-shadow(0 4px 14px #16130788);
+            animation: fade-in 1.2s cubic-bezier(.22,1,.36,1);
+        }
+        #harran-city-logo {
+            position: absolute;
+            top: 1px;
+            left: 16px;
+        }
+        .back-home {
+            display: inline-block;
+            margin: 0 auto 30px auto;
+            padding: 10px 20px;
+            background: #202406;
+            color: #ffd760;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            max-width: 220px;
+            text-align: center;
+        }
+        .back-home:hover {
+            background: #ffd760;
+            color: #23231d;
+            box-shadow: 0 4px 20px #ffdb70;
+        }
     </style>
 </head>
 <body>
-<a href="glowna.html" class="back-home">⬅ Wróć do strony głównej</a>
-
-
     <h1>Odliczanie do premiery Dying Light: The Beast</h1>
-
     
     <div id="countdown">
         <div class="time-section"><span class="num" id="days">00</span><span class="label">dni</span></div>
         <div class="time-section"><span class="num" id="hours">00</span><span class="label">godz</span></div>
         <div class="time-section"><span class="num" id="minutes">00</span><span class="label">min</span></div>
         <div class="time-section"><span class="num" id="seconds">00</span><span class="label">sek</span></div>
+    </div>
+
+    <div style="display:flex; justify-content:center; width: 100%;">
+        <a href="glowna.html" class="back-home">⬅ Wróć do strony głównej</a>
     </div>
 
     <!-- Ikonki w rogu -->
@@ -184,7 +187,6 @@
                 <path fill="#ffffff" d="M 25 3 C 13.59 3 4.209375 11.680781 3.109375 22.800781 L 14.300781 28.529297 C 15.430781 27.579297 16.9 27 18.5 27 L 18.550781 27 C 18.940781 26.4 19.389375 25.649141 19.859375 24.869141 C 20.839375 23.259141 21.939531 21.439062 23.019531 20.039062 C 23.259531 15.569063 26.97 12 31.5 12 C 36.19 12 40 15.81 40 20.5 C 40 25.03 36.430937 28.740469 31.960938 28.980469 C 30.560938 30.060469 28.750859 31.160859 27.130859 32.130859 C 26.350859 32.610859 25.6 33.059219 25 33.449219 L 25 33.5 C 25 37.09 22.09 40 18.5 40 C 14.91 40 12 37.09 12 33.5 C 12 33.33 12.009531 33.17 12.019531 33 L 3.2792969 28.519531 C 4.9692969 38.999531 14.05 47 25 47 C 37.15 47 47 37.15 47 25 C 47 12.85 37.15 3 25 3 z M 31.5 14 C 27.92 14 25 16.92 25 20.5 C 25 24.08 27.92 27 31.5 27 C 35.08 27 38 24.08 38 20.5 C 38 16.92 35.08 14 31.5 14 z M 31.5 16 C 33.99 16 36 18.01 36 20.5 C 36 22.99 33.99 25 31.5 25 C 29.01 25 27 22.99 27 20.5 C 27 18.01 29.01 16 31.5 16 z M 18.5 29 C 17.71 29 16.960313 29.200312 16.320312 29.570312 L 19.640625 31.269531 C 20.870625 31.899531 21.350469 33.410625 20.730469 34.640625 C 20.280469 35.500625 19.41 36 18.5 36 C 18.11 36 17.729375 35.910469 17.359375 35.730469 L 14.029297 34.019531 C 14.289297 36.259531 16.19 38 18.5 38 C 20.99 38 23 35.99 23 33.5 C 23 31.01 20.99 29 18.5 29 z"/>
             </svg>
         </a>
-
         <!-- Techland SVG -->
         <a href="https://techland.net/" target="_blank" title="Techland" aria-label="Techland">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="26" height="26" fill="currentColor">
@@ -200,7 +202,6 @@
                 </g>
             </svg>
         </a>
-
         <!-- Gry-Online SVG -->
         <a href="https://www.gry-online.pl/" target="_blank" title="Gry-Online.pl" aria-label="Gry-Online.pl">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 225" width="26" height="26" fill="currentColor">
@@ -213,30 +214,24 @@
 
     <script>
         var countdownDate = new Date("2025-09-19T00:00:00").getTime();
-
         function updateCountdown() {
             var now = new Date().getTime();
             var distance = countdownDate - now;
-
             if (distance < 0) {
                 document.getElementById("countdown").innerHTML = '<span style="font-size:2em;color:#22c55e;text-shadow:0 0 5px #fff;">Premiera!</span>';
                 return;
             }
-
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
             document.getElementById("days").innerText = String(days).padStart(2, '0');
             document.getElementById("hours").innerText = String(hours).padStart(2, '0');
             document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
             document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
         }
-
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
-
