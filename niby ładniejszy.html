@@ -11,7 +11,6 @@
     margin: 0;
     padding: 0;
   }
-
   .container {
     max-width: 650px;
     margin: 40px auto;
@@ -22,7 +21,6 @@
     backdrop-filter: blur(6px);
     animation: fadeIn 0.8s ease;
   }
-
   h1 {
     text-align: center;
     color: #ffd760;
@@ -30,7 +28,6 @@
     letter-spacing: 1px;
     text-shadow: 0 0 8px rgba(255, 215, 96, 0.8);
   }
-
   form {
     display: flex;
     flex-wrap: wrap;
@@ -38,7 +35,6 @@
     margin-bottom: 20px;
     justify-content: center;
   }
-
   input, select, button {
     padding: 10px 14px;
     border-radius: 8px;
@@ -46,18 +42,15 @@
     font-size: 1rem;
     transition: all 0.2s ease;
   }
-
   input, select {
     background: #23231d;
     color: #ffd760;
     border: 1px solid #ffd760;
     outline: none;
   }
-
   input:focus, select:focus {
     box-shadow: 0 0 8px #ffd760;
   }
-
   button {
     background: linear-gradient(135deg, #ffd760, #ffb400);
     color: #23231d;
@@ -66,18 +59,15 @@
     border: none;
     box-shadow: 0 4px 8px rgba(255, 215, 96, 0.4);
   }
-
   button:hover {
     background: linear-gradient(135deg, #ffde85, #ffc107);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(255, 215, 96, 0.5);
   }
-
   ul {
     padding-left: 0;
     list-style: none;
   }
-
   li {
     display: flex;
     justify-content: space-between;
@@ -89,7 +79,6 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     animation: slideIn 0.4s ease;
   }
-
   .status {
     background: #202406;
     color: #ffd760;
@@ -99,7 +88,6 @@
     margin-right: 10px;
     box-shadow: 0 0 6px rgba(255, 215, 96, 0.4);
   }
-
   .platform {
     padding: 4px 10px;
     border-radius: 12px;
@@ -111,7 +99,6 @@
   .ps3 { background: #4b77be; }  /* niebieski */
   .ps4 { background: #1f618d; }  /* ciemny niebieski */
   .pc { background: #27ae60; }   /* zielony */
-
   .delete-btn {
     background: #e74c3c;
     color: #fff;
@@ -122,12 +109,10 @@
     font-size: 0.85em;
     transition: all 0.2s ease;
   }
-
   .delete-btn:hover {
     background: #ff5a4c;
     transform: translateY(-1px);
   }
-
   /* Animacje */
   @keyframes fadeIn {
     from {opacity: 0; transform: translateY(20px);}
@@ -135,8 +120,8 @@
   }
 .back-home {
   display: inline-block;
-  margin-bottom: 18px;
-  padding: 8px 16px;
+  margin: 25px auto 40px auto;
+  padding: 10px 20px;
   background: #202406;
   color: #ffd760;
   border-radius: 8px;
@@ -144,12 +129,15 @@
   font-weight: bold;
   transition: background 0.2s, color 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  cursor: pointer;
+  font-size: 1.1em;
+  text-align: center;
+  max-width: 220px;
 }
 .back-home:hover {
   background: #ffd760;
   color: #23231d;
 }
-
   @keyframes slideIn {
     from {opacity: 0; transform: translateX(-20px);}
     to {opacity: 1; transform: translateX(0);}
@@ -176,7 +164,8 @@
     </form>
     <ul id="gameList"></ul>
   </div>
-<a href="glowna.html" class="back-home">⬅ Wróć do strony głównej</a>
+
+  <a href="glowna.html" class="back-home">⬅ Wróć do strony głównej</a>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -187,7 +176,6 @@
       const platform = document.getElementById('platform');
       
       let games = JSON.parse(localStorage.getItem('games') || '[]');
-
       function renderGames() {
         gameList.innerHTML = '';
         games.forEach((game, idx) => {
@@ -203,11 +191,9 @@
           gameList.appendChild(li);
         });
       }
-
       gameForm.addEventListener('submit', e => {
         e.preventDefault();
         if(!gameName.value.trim() || status.value === '-' || platform.value === '-') return;
-
         games.push({ 
           title: gameName.value.trim(), 
           status: status.value,
@@ -219,7 +205,6 @@
         status.value = '-';
         platform.value = '-';
       });
-
       gameList.addEventListener('click', e => {
         if(e.target.classList.contains('delete-btn')) {
           const idx = e.target.dataset.idx;
@@ -228,12 +213,8 @@
           renderGames();
         }
       });
-
       renderGames();
     });
   </script>
 </body>
 </html>
-
-
-
